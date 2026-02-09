@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STATIC STYLE | Premium Clothing</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">STATIC STYLE</div>
+        <div class="nav-links" id="nav-links"></div>
+        <div class="cart-icon" onclick="toggleCart()">
+            <i class="fas fa-shopping-bag"></i>
+            <span id="cart-count">0</span>
+        </div>
+    </nav>
+
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Bag</h3>
+            <span class="close-cart" onclick="toggleCart()">&times;</span>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <p style="padding: 20px; color: #666;">Your cart is empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="total">Total: $<span id="cart-total">0</span></div>
+            <button onclick="checkout()" class="btn-black">Checkout</button>
+        </div>
+    </div>
+
+    <header class="hero" id="hero-section">
+        <div class="hero-content">
+            <h1>New Season Arrivals</h1>
+            <p>Check out all the trends</p>
+            <button onclick="scrollToShop()">Shop Now</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="auth-section" class="form-container">
+    
+    <div id="login-form-box">
+        <h2>Welcome Back</h2>
+        <form onsubmit="event.preventDefault(); login();">
+            <input type="email" id="login-email" placeholder="Email Address" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit" class="btn-black">SIGN IN</button>
+        </form>
+        <p class="small-text">
+            Don't have an account? 
+            <span onclick="toggleAuth()" style="cursor:pointer; font-weight:bold; text-decoration:underline;">Register here</span>
+        </p>
+    </div>
+
+    <div id="register-form-box" class="hidden">
+        <h2>Create Account</h2>
+        <form onsubmit="event.preventDefault(); register();">
+            <input type="text" id="reg-username" placeholder="Username (Display Name)" required>
+            <input type="email" id="reg-email" placeholder="Email Address" required>
+            <input type="password" id="reg-password" placeholder="Password" required>
+            <button type="submit" class="btn-black">REGISTER</button>
+        </form>
+        <p class="small-text">
+            Already have an account? 
+            <span onclick="toggleAuth()" style="cursor:pointer; font-weight:bold; text-decoration:underline;">Login here</span>
+        </p>
+    </div>
+
+</div>
+
+        <div id="shop-section" class="hidden">
+            <h2 class="section-title">Shop The Collection</h2>
+            
+            <div class="categories">
+                <span onclick="filterProducts('all')" class="cat-btn active">All</span>
+                <span onclick="filterProducts('Men')" class="cat-btn">Men</span>
+                <span onclick="filterProducts('Women')" class="cat-btn">Women</span>
+                <span onclick="filterProducts('Accessories')" class="cat-btn">Accessories</span>
+            </div>
+
+            <div id="product-list" class="product-grid"></div>
+        </div>
+
+        <div id="admin-section" class="hidden form-container admin-panel">
+            <h3>Add New Product</h3>
+            <input type="text" id="p-name" placeholder="Product Name">
+            <input type="number" id="p-price" placeholder="Price ($)">
+            <input type="text" id="p-cat" placeholder="Category (e.g. Men, Women)">
+            <input type="text" id="p-img" placeholder="Image URL">
+            <button onclick="createProduct()" class="btn-black">Add Product</button>
+        </div>
+    </div>
+
+    <div id="order-modal" class="modal hidden">
+        <div class="modal-content">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h3>Order Placed!</h3>
+            <p>Thank you for shopping with MODA.</p>
+            <button onclick="closeModal()" class="btn-black">Continue Shopping</button>
+        </div>
+    </div>
+    <div id="edit-modal" class="modal hidden">
+    <div class="modal-content">
+        <h3>Edit Product</h3>
+        <input type="hidden" id="edit-id"> <input type="text" id="edit-name" placeholder="Name">
+        <input type="number" id="edit-price" placeholder="Price">
+        <input type="text" id="edit-cat" placeholder="Category">
+        <input type="text" id="edit-img" placeholder="Image URL">
+        
+        <button onclick="submitEdit()" class="btn-black">Save Changes</button>
+        <button onclick="closeEditModal()" class="btn-black" style="background: #999; margin-top: 10px;">Cancel</button>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
